@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     else {
         printf("One filename expected.\n");
     }
-    fclose(argv[1]);
+    fclose(in_fp);
 }
 
 /*****************************************************/
