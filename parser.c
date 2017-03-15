@@ -40,17 +40,27 @@ int lex();
 void term();
 void expr();
 
-int main() {
-/* Open the input data file and process its contents */ 
-    if ((in_fp = fopen("front.in", "r")) == NULL)
-        printf("ERROR - cannot open front.in \n"); 
-    else {
-        getChar(); 
-        do {
-            lex();
-            expr();
-        } while (nextToken != EOF);
+int main(int argc, char *argv[]) {
+    /* Open the input data file and process its contents */ 
+    if (argc == 2){
+        printf("The file to be parsed is %s\n", argv[1]);
+        if ((in_fp = fopen(argv[1], "r")) == NULL)
+            printf("ERROR - cannot open %s\n", argv[1]); 
+        else {
+            getChar(); 
+            do {
+                lex();
+                expr();
+            } while (nextToken != EOF);
+        }
     }
+    else if (argc > 2){
+        printf("Too many file names supplied. Only one required.\n");
+    }
+    else {
+        printf("One filename expected.\n");
+    }
+
 }
 
 /*****************************************************/
