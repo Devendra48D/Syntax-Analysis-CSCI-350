@@ -60,13 +60,14 @@ int main(int argc, char *argv[]) {
                 fclose(out_fp);
                 temp = fopen("front.out", "r");
                 printf("Parsing new line\n");
-                printf("*************  \n");
+                printf("*****************\n");
                 printf("  \n");
                 getChar(); 
                 do {
                     lex();
                     expr();
                 } while (nextToken != EOF);
+                printf(" \n");
                 printf("Parsing current line finished\n");
                 printf("*****************\n");
                 printf(" \n");
@@ -245,7 +246,7 @@ void term() {
 
 
 void error() {
-	printf("Error\n");
+	printf("***** Error here in the previous lexeme *****\n");
 }
 
 /* factor
