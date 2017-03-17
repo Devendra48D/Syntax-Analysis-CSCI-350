@@ -52,28 +52,39 @@ int main(int argc, char *argv[]) {
         if ((in_fp = fopen(argv[1], "r")) == NULL)
             printf("ERROR - cannot open %s\n", argv[1]); 
         else {
-
             while ((read = getline(&line, &len, in_fp)) != -1) {
-                out_fp = fopen("front.out", "w");
-                fputs(line, out_fp);
-                fputs("\0", out_fp);
-                fclose(out_fp);
-                temp = fopen("front.out", "r");
-                printf("Parsing new line\n");
-                printf("*****************\n");
-                printf("  \n");
-                getChar(); 
-                do {
-                    lex();
-                    expr();
-                } while (nextToken != EOF);
-                printf(" \n");
-                printf("Parsing current line finished\n");
-                printf("*****************\n");
-                printf(" \n");
-                fclose(temp);
-                temp = fopen("front.out", "w");
-                fclose(temp);
+                if ((out_fp = fopen("front.out", "w")) == NULL){
+                    printf("ERROR - cannot open front.out \n"); 
+                }
+                else{
+                    fputs(line, out_fp);
+                    fputs("\0", out_fp);
+                    fclose(out_fp);
+                    if ((temp = fopen("front.out", "r")) == NULL){
+                        printf("ERROR - cannot open front.out \n"); 
+                    }
+                    else{
+                        printf("Parsing new line\n");
+                        printf("*****************\n");
+                        printf("  \n");
+                        getChar(); 
+                        do {
+                            lex();
+                            expr();
+                        } while (nextToken != EOF);
+                        printf(" \n");
+                        printf("Parsing current line finished\n");
+                        printf("*****************\n");
+                        printf(" \n");
+                        fclose(temp);
+                        if ((temp = fopen("front.out", "w")) == NULL){
+                        printf("ERROR - cannot open front.out \n"); 
+                        }
+                        else{  
+                            fclose(temp);
+                        }
+                    }
+                }    
             } 
         }
     }
