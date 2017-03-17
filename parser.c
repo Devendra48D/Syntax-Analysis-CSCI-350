@@ -47,11 +47,20 @@ int main(int argc, char *argv[]) {
         if ((in_fp = fopen(argv[1], "r")) == NULL)
             printf("ERROR - cannot open %s\n", argv[1]); 
         else {
-            getChar(); 
-            do {
-                lex();
-                expr();
-            } while (nextToken != EOF);
+            do{
+                printf("Parsing new line\n");
+                printf("*************  \n");
+                printf("  \n");
+                getChar(); 
+                do {
+                    lex();
+                    expr();
+                } while (nextToken != EOF);
+                printf("Parsing current line finished\n");
+                printf("*****************\n");
+                printf(" \n");
+            }while ((nextChar == '\n') && (nextToken != EOF));
+            
         }
     }
     else if (argc > 2){
@@ -134,7 +143,7 @@ void getChar() {
 /* getNonBlank - a function to call getChar until it
 returns a non-whitespace character */ 
 void getNonBlank() {
-    while (isspace(nextChar)) 
+    while (isspace(nextChar) && (nextChar != '\n')) 
         getChar();
 } 
 
