@@ -55,12 +55,11 @@ int main(int argc, char *argv[]) {
                 do {
                     lex();
                     expr();
-                } while (nextToken != EOF);
+                } while (nextChar != '\n');
                 printf("Parsing current line finished\n");
                 printf("*****************\n");
                 printf(" \n");
-            }while ((nextChar == '\n') || (nextToken != EOF));
-            
+            }while(nextToken != EOF);   
         }
     }
     else if (argc > 2){
@@ -143,7 +142,7 @@ void getChar() {
 /* getNonBlank - a function to call getChar until it
 returns a non-whitespace character */ 
 void getNonBlank() {
-    while (isspace(nextChar)) 
+    while (isspace(nextChar) && (nextChar != '\n')) 
         getChar();
 } 
 
