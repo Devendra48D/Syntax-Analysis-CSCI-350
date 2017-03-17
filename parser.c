@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
                 do {
                     lex();
                     expr();
-                } while ((nextChar != '\n') || (nextToken != EOF));
+                } while ((nextChar != '\n') && (nextToken != EOF));
                 printf("Parsing current line finished\n");
                 printf("*****************\n");
                 printf(" \n");
