@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
                 printf("Parsing current line finished\n");
                 printf("*****************\n");
                 printf(" \n");
-            }while ((nextChar == '\n') && (nextToken != EOF));
+            }while ((nextChar == '\n') || (nextToken != EOF));
             
         }
     }
@@ -143,7 +143,7 @@ void getChar() {
 /* getNonBlank - a function to call getChar until it
 returns a non-whitespace character */ 
 void getNonBlank() {
-    while (isspace(nextChar) && (nextChar != '\n')) 
+    while (isspace(nextChar)) 
         getChar();
 } 
 
