@@ -10,8 +10,13 @@ char nextChar;
 int lexLen;
 int token;
 int nextToken;
+char *line = NULL;
+size_t len = 0;
+ssize_t read;
 
 FILE *in_fp, *fopen();
+FILE *out_fp, *fopen();
+FILE *temp, *fopen();
 
 /* Function declarations */ 
 void addChar();
@@ -47,7 +52,13 @@ int main(int argc, char *argv[]) {
         if ((in_fp = fopen(argv[1], "r")) == NULL)
             printf("ERROR - cannot open %s\n", argv[1]); 
         else {
-            do{
+
+            while ((read = getline(&line, &len, in_fp)) != -1) {
+                out_fp = fopen("front.out", "w");
+                fputs(line, out_fp);
+                fputs("\0", out_fp);
+                fclose(out_fp);
+                temp = fopen("front.out", "r");
                 printf("Parsing new line\n");
                 printf("*************  \n");
                 printf("  \n");
@@ -55,11 +66,14 @@ int main(int argc, char *argv[]) {
                 do {
                     lex();
                     expr();
-                } while ((nextChar != '\n') && (nextToken != EOF));
+                } while (nextToken != EOF);
                 printf("Parsing current line finished\n");
                 printf("*****************\n");
                 printf(" \n");
-            }while(nextToken != EOF);   
+                fclose(temp);
+                temp = fopen("front.out", "w");
+                fclose(temp);
+            } 
         }
     }
     else if (argc > 2){
@@ -125,7 +139,7 @@ void addChar() {
 /* getChar - a function to get the next character of
 input and determine its character class */ 
 void getChar() {
-    if ((nextChar = getc(in_fp)) != EOF) {
+    if ((nextChar = getc(temp)) != EOF) {
         if (isalpha(nextChar))
             charClass = LETTER;
         else if (isdigit(nextChar))
