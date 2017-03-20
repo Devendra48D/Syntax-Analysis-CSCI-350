@@ -84,6 +84,8 @@ int main(int argc, char *argv[]) {
                             fclose(temp);
                         }
                     }
+                    printf("Parsing completed. \n");
+                    printf("*****************\n");
                 }    
             } 
         }
@@ -168,7 +170,7 @@ void getChar() {
 /* getNonBlank - a function to call getChar until it
 returns a non-whitespace character */ 
 void getNonBlank() {
-    while (isspace(nextChar) && (nextChar != '\n')) 
+    while (isspace(nextChar)) 
         getChar();
 } 
 

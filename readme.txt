@@ -43,18 +43,11 @@ to run the program on the input from front.in
 
 iv) More information
 
-When running the program, for some lines the last part of the output would be like this 
-"
-Next token is: -1, Next lexeme is 
+When running the program, make sure to use 
+./parser <file_name> 
+where <file_name> is replaced by the actual file name. The ./ should not be missing. 
+Make sure that all the files in the folder are present from the repository for proper functioning of the program. 
 
-Exit <factor>
-Exit <term>
-Exit <expr>
- 
-Parsing current line finished
-*****************
-"
-Here the blank space and empty line after the "lexeme is" signifies the next line character '\n'. 
 
 
 
