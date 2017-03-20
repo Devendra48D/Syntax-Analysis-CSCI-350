@@ -84,10 +84,10 @@ int main(int argc, char *argv[]) {
                             fclose(temp);
                         }
                     }
-                    printf("Parsing completed. \n");
-                    printf("*****************\n");
-                }    
+                } 
             } 
+            printf("Parsing completed. \n");
+            printf("*****************\n");
         }
     }
     else if (argc > 2){
