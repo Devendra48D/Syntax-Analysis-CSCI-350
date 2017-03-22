@@ -48,7 +48,7 @@ void expr();
 int main(int argc, char *argv[]) {
     /* Open the input data file and process its contents */ 
     if (argc == 2){
-        printf("The file to be parsed is %s\n", argv[1]);
+        printf("The file to be parsed is %s\n\n", argv[1]);
         if ((in_fp = fopen(argv[1], "r")) == NULL)
             printf("ERROR - cannot open %s\n", argv[1]); 
         else {
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
                         printf("ERROR - cannot open front.out \n"); 
                     }
                     else{
-                        printf("Parsing new line\n");
+                        printf("Parsing new line %s\n", line);
                         printf("*****************\n");
                         printf("  \n");
                         getChar(); 
