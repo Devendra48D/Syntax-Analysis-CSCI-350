@@ -274,7 +274,7 @@ void error() {
     if (lexeme[1] == 'O')
         printf("There is an error in the last lexeme of this expression.\n");
     else
-        printf("There is an error at %s .\n", lexeme);
+        printf("There is an error at '%s' .\n", lexeme);
 }
 
 /* factor
