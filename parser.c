@@ -259,7 +259,10 @@ void term() {
 
 
 void error() {
-	printf("***** Error here in the previous lexeme *****\n");
+    if (lexeme[1] == 'O')
+        printf("There is an error in the last character of the expression.\n");
+    else
+        printf("There is an error at %s .\n", lexeme);
 }
 
 /* factor
