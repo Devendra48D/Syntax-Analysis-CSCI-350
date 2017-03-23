@@ -260,7 +260,7 @@ void term() {
 
 void error() {
     if (lexeme[1] == 'O')
-        printf("There is an error in the last character of the expression.\n");
+        printf("There is an error in the last lexeme of the expression.\n");
     else
         printf("There is an error at %s .\n", lexeme);
 }
