@@ -271,7 +271,7 @@ void term() {
 void error() {
     errorbool = 1;
     printf("%s\n",errormsg);
-    if (lexeme[1] == 'O')
+    if ((lexeme[0] == 'E') && (lexeme[1] == 'O') && (lexeme[2] == 'F'))
         printf("There is an error in the last lexeme of this expression.\n");
     else
         printf("There is an error at '%s' .\n", lexeme);
