@@ -7,12 +7,15 @@
 int charClass;
 char lexeme [100];
 char nextChar;
+char errormsg[10000];
+int i = 0;
 int lexLen;
 int token;
 int nextToken;
 char *line = NULL;
 size_t len = 0;
 ssize_t read;
+int errorbool = 0;
 
 FILE *in_fp, *fopen();
 FILE *out_fp, *fopen();
@@ -66,6 +69,8 @@ int main(int argc, char *argv[]) {
                     else{
                         printf("Parsing new line %s\n", line);
                         printf("*****************\n");
+                        i = 0;
+                        errorbool = 0;
                         printf("  \n");
                         getChar(); 
                         do {
@@ -154,6 +159,11 @@ void addChar() {
 input and determine its character class */ 
 void getChar() {
     if ((nextChar = getc(temp)) != EOF) {
+        if (errorbool == 0){
+            errormsg[i] = nextChar;
+            i = i + 1;
+            errormsg[i] = '\0';
+        }
         if (isalpha(nextChar))
             charClass = LETTER;
         else if (isdigit(nextChar))
@@ -259,8 +269,10 @@ void term() {
 
 
 void error() {
+    errorbool = 1;
+    printf("%s\n",errormsg);
     if (lexeme[1] == 'O')
-        printf("There is an error in the last lexeme of the expression.\n");
+        printf("There is an error in the last lexeme of this expression.\n");
     else
         printf("There is an error at %s .\n", lexeme);
 }
