@@ -22,9 +22,9 @@ URL: https://github.com/Devendra48D/Syntax-Analysis-CSCI-350/commit/266657acd9b7
 Brief Description: Bug fixed to achieve first working multiline parsing version
 URL: https://github.com/Devendra48D/Syntax-Analysis-CSCI-350/commit/967b23c8bf6a6ab7a69752499b2cb5e2829048c5
 
-5) Date and time: March 17, 2017 at about 5:05pm EST
-Brief Description: Fail safes to file input/output added
-URL: https://github.com/Devendra48D/Syntax-Analysis-CSCI-350/commit/03e6eb10fa0b63458c849095524d9a80cf35ea85
+5) Date and time: March 23, 2017 at about 1:05pm EST
+Brief Description: Error handling updated
+URL: https://github.com/Devendra48D/Syntax-Analysis-CSCI-350/commit/e4497d0849f12ed39067bd7240af8ffa09a92f84#diff-40b52c67473df1545465cbc8af05f054
 
 
 iii) Instructions to compile the program
