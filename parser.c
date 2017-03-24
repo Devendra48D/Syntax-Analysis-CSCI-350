@@ -168,7 +168,8 @@ void getChar() {
     if ((nextChar = getc(temp)) != EOF) {
         if (errorbool == 0){
             errormsg[i] = nextChar;
-            errorchar1 = nextChar;
+            if (nextChar != '\n')
+                errorchar1 = nextChar;
             i = i + 1;
             errormsg[i] = '\0';
         }
